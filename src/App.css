@@ -1,0 +1,38 @@
+body{
+  background-color: grey;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 12s linear infinite;
+}
+
+
+@keyframes bounceAdvert {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-bounceAdvert {
+  animation: bounceAdvert 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeAdvert {
+  0% { opacity: 0; transform: translateY(10px); }
+  50% { opacity: 1; transform: translateY(0px); }
+  100% { opacity: 1; }
+}
+
+.animate-fadeAdvert {
+  animation: fadeAdvert 0.8s ease-in-out;
+}
+
+
