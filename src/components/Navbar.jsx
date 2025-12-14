@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { api } from "../utils/api";
 import { socket } from "../socket";
 import DelayedLink from "./DelayedLink";
+import LeposavasLogo from "../assets/leposavas-logo.png";
+
 
 export default function Navbar() {
   const [unreadCount, setUnreadCount] = useState(0);
@@ -60,10 +62,15 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-gray-900 text-white fixed w-full">
+    <nav className="animated-blue-gradient text-white fixed w-full">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         
-        <div className="text-xl font-bold">LEPO</div>
+        <div className="text-xl font-bold flex gap-1 items-center">
+          <h1>Leposavas</h1>
+          <img className="w-10 rounded-full" src={LeposavasLogo} alt="" />
+
+        </div>
+        
 
         <div className="flex items-center gap-6">
           

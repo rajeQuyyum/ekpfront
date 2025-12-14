@@ -36,3 +36,30 @@ body{
 }
 
 
+/* Animated blue gradient background */
+.animated-blue-gradient {
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #6b99e3,
+    #181c2a
+  );
+  background-size: 300% 300%;
+  animation: gradientMove 8s ease infinite;
+}
+
+/* Animation */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
