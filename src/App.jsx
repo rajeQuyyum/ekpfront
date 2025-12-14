@@ -33,13 +33,13 @@ export default function App() {
 
         {/* ✅ Full-screen loading overlay */}
         {initialLoading && (
-          <div className="fixed inset-0 flex flex-col items-center justify-center bg-white backdrop-blur-md z-[9999]">
+          <div className="fixed inset-0 flex flex-col items-center justify-center bg-white backdrop-blur-md z-50">
             <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
             <p className="text-black mt-4 text-xl animate-pulse">
                  <img
                src={LeposavasLogo}
                alt="Leposavas Logo"
-               className="h-60 rounded-full w-auto"
+               className="h-60 rounded-full w-auto mb-3"
               />
 
              Welcome To Leposavas Loading...
