@@ -54,7 +54,7 @@ export default function Home() {
           <img
             src={adverts[currentIndex].imageUrl}
             alt="advert"
-            className="w-32 h-32 object-cover rounded mb-2 shadow-md"
+            className="md:w-[600px] w-full  object-cover rounded mb-2 shadow-md"
           />
         )}
 
