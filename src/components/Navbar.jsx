@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { api } from "../utils/api";
 import { socket } from "../socket";
+import DelayedLink from "./DelayedLink";
 
 export default function Navbar() {
   const [unreadCount, setUnreadCount] = useState(0);
@@ -66,16 +67,16 @@ export default function Navbar() {
 
         <div className="flex items-center gap-6">
           
-          <NavLink to="/" className="hover:text-blue-300">
+          <DelayedLink to="/" className="hover:text-blue-300">
             Home
-          </NavLink>
+          </DelayedLink>
 
-          <NavLink to="/chat" className="hover:text-blue-300">
+          <DelayedLink to="/chat" className="hover:text-blue-300">
             Chat
-          </NavLink>
+          </DelayedLink>
 
           {/* 🔥 NOTIFICATION BADGE */}
-          <NavLink to="/notifications" className="relative hover:text-blue-300">
+          <DelayedLink to="/notifications" className="relative hover:text-blue-300">
             Notifications
 
             {unreadCount > 0 && (
@@ -83,7 +84,7 @@ export default function Navbar() {
                 {unreadCount}
               </span>
             )}
-          </NavLink>
+          </DelayedLink>
 
           {/* <NavLink to="/admin" className="hover:text-blue-300">
             Admin

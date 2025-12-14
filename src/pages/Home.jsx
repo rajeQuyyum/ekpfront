@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import ChatWind from "./ChatWidget";
 import { api } from "../utils/api";
+import DelayedLink from "../components/DelayedLink";
 
 export default function Home() {
   const [showRenters, setShowRenters] = useState(false);
@@ -88,17 +89,17 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-2 items-center mt-10">
-        <NavLink to="/ele" className="text-xl font-semibold hover:text-amber-400 list-item">
+        <DelayedLink to="/ele" className="text-xl font-semibold hover:text-amber-400 list-item">
           Engineering Services
-        </NavLink>
+        </DelayedLink>
 
-        <NavLink to="/tech" className="text-xl font-semibold hover:text-amber-400 list-item">
+        <DelayedLink to="/tech" className="text-xl font-semibold hover:text-amber-400 list-item">
           Tech Services
-        </NavLink>
+        </DelayedLink>
 
-        <NavLink to="/ser" className="text-xl font-semibold hover:text-amber-400 list-item">
+        <DelayedLink to="/ser" className="text-xl font-semibold hover:text-amber-400 list-item">
           Home Services
-        </NavLink>
+        </DelayedLink>
 
         <div>
           <button
@@ -110,9 +111,9 @@ export default function Home() {
 
           {showRenters && (
             <div className="flex flex-col mt-3 animate-fadeIn">
-              <NavLink to="/car" className="hover:text-red-500">Cars</NavLink>
-              <NavLink to="/house" className="hover:text-red-500">House/Hostels</NavLink>
-              <NavLink to="/hostel" className="hover:text-red-500">Hotel/Appartment</NavLink>
+              <DelayedLink to="/car" className="hover:text-red-500">Cars</DelayedLink>
+              <DelayedLink to="/house" className="hover:text-red-500">House/Hostels</DelayedLink>
+              <DelayedLink to="/hostel" className="hover:text-red-500">Hotel/Appartment</DelayedLink>
             </div>
           )}
         </div>
