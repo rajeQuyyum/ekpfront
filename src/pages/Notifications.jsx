@@ -71,7 +71,7 @@ export default function Notifications() {
   };
 
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="max-w-xl mx-auto pt-20">
       <h1 className="text-2xl font-bold mb-4">Notifications</h1>
 
       {notifications.length === 0 && (

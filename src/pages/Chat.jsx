@@ -88,7 +88,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-6">
+    <div className="max-w-2xl mx-auto  pt-40">
 
       {/* LOGIN SCREEN */}
       {mode === "login" && !user && (
