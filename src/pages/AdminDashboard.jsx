@@ -134,7 +134,7 @@ export default function AdminDashboard() {
     <div className="flex md:flex-row flex-col pt-10 justify-center">
 
       {/* USERS LIST */}
-      <div className="bg-white p-4 rounded shadow h-[70vh] overflow-y-auto">
+      <div className="bg-white p-4 rounded shadow h-[70vh] overflow-y-auto border">
         <h2 className="font-bold mb-3">Users</h2>
 
         {users.length === 0 && <p className="text-gray-500">No chats yet</p>}
@@ -146,13 +146,13 @@ export default function AdminDashboard() {
               setSelected(u);
               loadSelectedChat(u._id);
             }}
-            className="border p-3 rounded mb-2 cursor-pointer hover:bg-gray-100"
+            className="md:w-fit w-full p-3 rounded mb-2 cursor-pointer hover:bg-gray-100"
           >
             <div className="font-semibold">{u.name}</div>
             <div className="text-xs text-gray-500">
               {u.email} • {u.phone}
             </div>
-            <div className="text-xs text-gray-400">
+            <div className="text-xs text-gray-400 border-b-2">
               Messages: {u.messages.length}
             </div>
           </div>
