@@ -60,7 +60,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-gray-900 text-white">
+    <nav className="bg-gray-900 text-white fixed w-full">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         
         <div className="text-xl font-bold">LEPO</div>
