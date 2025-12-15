@@ -28,8 +28,9 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded shadow mt-20">
-      <h1 className="text-xl font-bold mb-4 text-center">Admin Login</h1>
+    <div className="max-w-md mx-auto p-6  rounded shadow pt-40">
+      <div className="bg-white">
+        <h1 className="text-xl font-bold mb-4 text-center">Admin Login</h1>
 
       <input
         className="w-full border p-2 mb-3 rounded"
@@ -50,6 +51,7 @@ export default function AdminLogin() {
       >
         Login
       </button>
+      </div>
     </div>
   );
 }

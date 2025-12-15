@@ -48,8 +48,8 @@ export default function Engineering() {
   }, []);
 
   return (
-    <div className="p-6 container mx-auto">
-      <h2 className="text-2xl font-bold mb-6">Engineering</h2>
+    <div className="p-6 container mx-auto pt-20">
+      <h2 className="text-2xl font-bold mb-6 text-center">Engineering</h2>
 
       {items.length === 0 && <p>No engineering items available.</p>}
 

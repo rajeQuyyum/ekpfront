@@ -131,7 +131,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="flex md:flex-row flex-col pt-10 justify-center">
+    <div className="flex md:flex-row flex-col pt-20 justify-center">
 
       {/* USERS LIST */}
       <div className="bg-white p-4 rounded shadow h-[70vh] overflow-y-auto border">

@@ -1,104 +1,91 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { api } from "../utils/api";
 import { socket } from "../socket";
 import DelayedLink from "./DelayedLink";
 import LeposavasLogo from "../assets/leposavas-logo.png";
-
+import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
   const [unreadCount, setUnreadCount] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [hideMobileNavbar, setHideMobileNavbar] = useState(false);
 
-  const loadNotifications = async () => {
-    try {
-      const res = await api.get("/notifications");
-      const notes = res.data.notifications || [];
-
-      // Count only unread notifications for this "user" identifier
-      const unread = notes.filter(n => !n.readBy?.includes("user"));
-      setUnreadCount(unread.length);
-
-    } catch (err) {
-      console.error("Failed to load notifications", err);
-    }
-  };
+  const isMobile = window.innerWidth < 768;
 
   useEffect(() => {
+    const loadNotifications = async () => {
+      try {
+        const res = await api.get("/notifications");
+        const notes = res.data.notifications || [];
+        const unread = notes.filter(n => !n.readBy?.includes("user"));
+        setUnreadCount(unread.length);
+      } catch {}
+    };
+
     loadNotifications();
 
-    // New notification increases unread
-    socket.on("new_notification", () => {
-      setUnreadCount((prev) => prev + 1);
-    });
+    socket.on("new_notification", () =>
+      setUnreadCount((prev) => prev + 1)
+    );
 
-    // When a notification is updated (e.g. marked read), reload counts
-    socket.on("notification_updated", () => {
-      loadNotifications();
-    });
-
-    // When a notification is deleted, reload counts
-    socket.on("notification_deleted", () => {
-      loadNotifications();
-    });
-
-    // Optional: if server emits notification_read targeted event, decrement
-    socket.on("notification_read", (payload) => {
-      // payload: { notificationId, userId }
-      // Only decrement if this is our "user" id (we're using "user" literal)
-      if (payload?.userId === "user") {
-        setUnreadCount((prev) => Math.max(0, prev - 1));
-      } else {
-        // fallback to reload to be safe
-        loadNotifications();
-      }
-    });
-
-    return () => {
-      socket.off("new_notification");
-      socket.off("notification_updated");
-      socket.off("notification_deleted");
-      socket.off("notification_read");
-    };
+    return () => socket.off("new_notification");
   }, []);
 
+  // 🔥 HIDE NAVBAR ONLY ON MOBILE
+  if (hideMobileNavbar && isMobile) return null;
+
+  const handleMobileLinkClick = () => {
+    setMenuOpen(false);
+    setHideMobileNavbar(true);
+  };
+
   return (
-    <nav className="animated-blue-gradient text-white fixed w-full">
+    <nav className="animated-blue-gradient text-white fixed w-full z-50">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        
-        <div className="text-xl font-bold flex gap-1 items-center">
+
+        {/* LOGO */}
+        <div className="flex items-center gap-2 font-bold text-xl">
+          <img src={LeposavasLogo} className="w-9 h-9 rounded-full" />
           <h1>Leposavas</h1>
-          <img className="w-10 rounded-full" src={LeposavasLogo} alt="" />
-
         </div>
-        
 
-        <div className="flex items-center gap-6">
-          
-          <DelayedLink to="/" className="hover:text-blue-300">
+        {/* DESKTOP LINKS */}
+        <div className="hidden md:flex items-center gap-6">
+          <DelayedLink to="/">Home</DelayedLink>
+          <DelayedLink to="/chat">Chat</DelayedLink>
+          <DelayedLink to="/notifications">Notifications</DelayedLink>
+        </div>
+
+        {/* MOBILE MENU ICON */}
+        <button
+          className="md:hidden text-2xl"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
+
+      {/* MOBILE MENU */}
+      {menuOpen && (
+        <div className="md:hidden bg-blue-900/95 px-6 py-4 flex flex-col gap-4">
+          <DelayedLink to="/" onClick={handleMobileLinkClick}>
             Home
           </DelayedLink>
 
-          <DelayedLink to="/chat" className="hover:text-blue-300">
+          <DelayedLink to="/chat" onClick={handleMobileLinkClick}>
             Chat
           </DelayedLink>
 
-          {/* 🔥 NOTIFICATION BADGE */}
-          <DelayedLink to="/notifications" className="relative hover:text-blue-300">
+          <DelayedLink to="/notifications" onClick={handleMobileLinkClick}>
             Notifications
-
             {unreadCount > 0 && (
-              <span className="absolute -top-2 -right-4 px-2 py-1 text-xs bg-red-600 text-white rounded-full">
+              <span className="ml-2 text-xs bg-red-600 px-2 py-1 rounded-full">
                 {unreadCount}
               </span>
             )}
           </DelayedLink>
-
-          {/* <NavLink to="/admin" className="hover:text-blue-300">
-            Admin
-          </NavLink> */}
-
         </div>
-      </div>
+      )}
     </nav>
   );
 }

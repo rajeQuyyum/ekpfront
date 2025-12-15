@@ -10,6 +10,7 @@ export default function AdminAdvert() {
   const [location, setLocation] = useState("");
   const [phone, setPhone] = useState("");
   const [image, setImage] = useState(null);
+  
 
   const [editingId, setEditingId] = useState(null);
   const [editName, setEditName] = useState("");
@@ -85,27 +86,78 @@ export default function AdminAdvert() {
     alert("Updated!");
   };
 
+  const wordCount = description.trim()
+    ? description.trim().split(/\s+/).length
+    : 0;
+
   return (
     <div className="p-6 bg-white rounded shadow w-full">
       <h2 className="font-bold text-xl mb-4">Advert Management</h2>
 
       {/* CREATE */}
       <div className="border p-4 rounded mb-6">
-        <input className="border p-2 w-full mb-2 rounded" placeholder="Name"
-          value={name} onChange={(e) => setName(e.target.value)} />
+        <input
+         className="border p-2 w-full mb-2 rounded"
+         placeholder="Name (max 30 characters)"
+         maxLength={30}
+         value={name}
+         onChange={(e) => setName(e.target.value)}
+        />
 
-        <textarea className="border p-2 w-full mb-2 rounded"
-          placeholder="Description" rows="2"
-          value={description} onChange={(e) => setDescription(e.target.value)} />
+        <p className="text-sm text-gray-500 text-right">
+         {name.length} / 30
+        </p>
 
-        <input className="border p-2 w-full mb-2 rounded" placeholder="Location"
+
+        <textarea
+         className="border p-2 w-full mb-1 rounded"
+         placeholder="Description (max 50 characters)"
+         rows="2"
+         maxLength={50}
+         value={description}
+         onChange={(e) => setDescription(e.target.value)}
+          />
+
+        <p className="text-sm text-gray-500 text-right">
+          {description.length} / 50 characters
+          </p>
+
+        <input className="border p-2 w-full mb-2 rounded" placeholder="Location (max 25 characters)"
+        maxLength={25}
           value={location} onChange={(e) => setLocation(e.target.value)} />
+          <p className="text-sm text-gray-500 text-right">
+         {location.length} / 25
+        </p>
 
-        <input className="border p-2 w-full mb-2 rounded" placeholder="Phone"
+        <input className="border p-2 w-full mb-2 rounded" placeholder="Phone (max 28 characters)"
+        maxLength={28}
           value={phone} onChange={(e) => setPhone(e.target.value)} />
+          <p className="text-sm text-gray-500 text-right">
+         {phone.length} / 28
+        </p>
 
-        <input type="file" className="border p-2 w-full mb-2 rounded"
-          onChange={(e) => setImage(e.target.files[0])} />
+
+
+        <input
+        type="file"
+        className="border p-2 w-full mb-2 rounded"
+        accept="image/*"
+        onChange={(e) => {
+         const file = e.target.files[0];
+         if (!file) return;
+
+          const maxSize = 2 * 1024 * 1024; // ✅ 1MB
+     
+         if (file.size > maxSize) {
+          alert("File size must be 2MB or less");
+          e.target.value = ""; // reset input
+          return;
+         }
+
+         setImage(file);
+        }}
+       />
+
 
         <button onClick={createItem} className="bg-blue-600 text-white px-4 py-2 rounded">
           Add Advert
@@ -120,19 +172,62 @@ export default function AdminAdvert() {
           {editingId === item._id ? (
             <>
               <input className="border p-2 w-full mb-2 rounded"
+              placeholder="Name (max 30 characters)"
+               maxLength={30}
                 value={editName} onChange={(e) => setEditName(e.target.value)} />
+                <p className="text-sm text-gray-500 text-right">
+               {editName.length} / 30
+              </p>
+
 
               <textarea className="border p-2 w-full mb-2 rounded"
+              placeholder="Description (max 50 characters)"
+               rows="2"
+                maxLength={50}
                 value={editDescription} onChange={(e) => setEditDescription(e.target.value)} />
+                 <p className="text-sm text-gray-500 text-right">
+                 {editDescription.length} / 50 characters
+                 </p>
+
 
               <input className="border p-2 w-full mb-2 rounded"
+               placeholder="Location (max 25 characters)"
+                maxLength={25}
                 value={editLocation} onChange={(e) => setEditLocation(e.target.value)} />
+                <p className="text-sm text-gray-500 text-right">
+                {editLocation.length} / 25
+               </p>
+
+
 
               <input className="border p-2 w-full mb-2 rounded"
+              placeholder="Phone (max 28 characters)"
+               maxLength={28}
                 value={editPhone} onChange={(e) => setEditPhone(e.target.value)} />
+                <p className="text-sm text-gray-500 text-right">
+                {editPhone.length} / 25
+               </p>
 
-              <input type="file" className="border p-2 w-full mb-2 rounded"
-                onChange={(e) => setEditImage(e.target.files[0])} />
+
+               <input
+        type="file"
+        className="border p-2 w-full mb-2 rounded"
+       accept="image/*"
+       onChange={(e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const maxSize = 2 * 1024 * 1024; // ✅ 1MB
+
+         if (file.size > maxSize) {
+         alert("File size must be 2MB or less");
+         e.target.value = ""; // reset input
+         return;
+        }
+
+       setImage(file);
+         }}
+        />
 
               <img src={editImage ? URL.createObjectURL(editImage) : item.imageUrl}
                 className="w-32 h-32 object-cover rounded mb-2" />
