@@ -113,6 +113,10 @@ export default function AdminHouses() {
     </div>
   );
 
+  const wordCount = description.trim()
+    ? description.trim().split(/\s+/).length
+    : 0;
+
   return (
     <div className="p-6 bg-white rounded shadow w-full">
       <h2 className="font-bold text-xl mb-4">Houses / Hostels Management</h2>
@@ -123,38 +127,68 @@ export default function AdminHouses() {
 
         <input
           className="border p-2 w-full mb-2 rounded"
-          placeholder="House/Hostel Name"
+          placeholder="House/Hostel Name (max 30 charaters)"
+          maxLength={30}
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        <p className="text-sm text-gray-500 text-right">
+         {name.length} / 30
+        </p>
 
         <textarea
           className="border p-2 w-full mb-2 rounded"
-          placeholder="Description"
+          placeholder="Description (max 50 charaters)"
           rows="2"
+          maxLength={50}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
+        <p className="text-sm text-gray-500 text-right">
+         {description.length} / 50
+        </p>
 
         <input
           className="border p-2 w-full mb-2 rounded"
-          placeholder="Phone Number"
+          placeholder="Phone Number (max 28 charaters)"
+          maxLength={28}
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
+        <p className="text-sm text-gray-500 text-right">
+         {phone.length} / 28
+        </p>
 
         <input
           className="border p-2 w-full mb-2 rounded"
-          placeholder="Location (Area / Address)"
+          placeholder="Location (max 25 charaters)"
+          maxLength={25}
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
+        <p className="text-sm text-gray-500 text-right">
+         {location.length} / 25
+        </p>
 
-        <input
-          type="file"
-          className="border p-2 w-full mb-2 rounded"
-          onChange={(e) => setImage(e.target.files[0])}
-        />
+         <input
+        type="file"
+        className="border p-2 w-full mb-2 rounded"
+        accept="image/*"
+        onChange={(e) => {
+         const file = e.target.files[0];
+         if (!file) return;
+
+          const maxSize = 2 * 1024 * 1024; // ✅ 1MB
+     
+         if (file.size > maxSize) {
+          alert("File size must be 2MB or less");
+          e.target.value = ""; // reset input
+          return;
+         }
+
+         setImage(file);
+        }}
+       />
 
         <h4 className="font-semibold mt-2">Rating</h4>
         <RatingButtons value={rating} setValue={setRating} />
@@ -177,34 +211,71 @@ export default function AdminHouses() {
               {/* EDIT MODE */}
               <input
                 className="border p-2 w-full mb-2 rounded"
+                placeholder="House/Hostel Name (max 30 charaters)"
+                maxLength={30}
                 value={editName}
                 onChange={(e) => setEditName(e.target.value)}
               />
+               <p className="text-sm text-gray-500 text-right">
+              {editName.length} / 30
+             </p>
+
 
               <textarea
                 className="border p-2 w-full mb-2 rounded"
+                 placeholder="Description (max 50 charaters)"
+                maxLength={50}
                 rows="2"
                 value={editDescription}
                 onChange={(e) => setEditDescription(e.target.value)}
               />
+                <p className="text-sm text-gray-500 text-right">
+              {editDescription.length} / 50
+             </p>
+
 
               <input
                 className="border p-2 w-full mb-2 rounded"
+                placeholder="Phone Number (max 50 charaters)"
+                maxLength={28}
                 value={editPhone}
                 onChange={(e) => setEditPhone(e.target.value)}
               />
+                <p className="text-sm text-gray-500 text-right">
+              {editPhone.length} / 28
+             </p>
 
               <input
                 className="border p-2 w-full mb-2 rounded"
+                placeholder="Location (max 25 charaters)"
+                maxLength={25}
                 value={editLocation}
                 onChange={(e) => setEditLocation(e.target.value)}
               />
+              <p className="text-sm text-gray-500 text-right">
+              {editLocation.length} / 25
+             </p>
 
-              <input
-                type="file"
-                className="border p-2 w-full mb-2 rounded"
-                onChange={(e) => setEditImage(e.target.files[0])}
-              />
+                     <input
+        type="file"
+        className="border p-2 w-full mb-2 rounded"
+        accept="image/*"
+        onChange={(e) => {
+         const file = e.target.files[0];
+         if (!file) return;
+
+          const maxSize = 2 * 1024 * 1024; // ✅ 1MB
+     
+         if (file.size > maxSize) {
+          alert("File size must be 2MB or less");
+          e.target.value = ""; // reset input
+          return;
+         }
+
+         setEditImage(file);
+        }}
+       />
+
 
               <img
                 src={editImage ? URL.createObjectURL(editImage) : item.imageUrl}
