@@ -225,7 +225,7 @@ export default function AdminAdvert() {
          return;
         }
 
-       setImage(file);
+       setEditImage(file);
          }}
         />
 

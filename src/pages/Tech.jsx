@@ -48,49 +48,60 @@ export default function Tech() {
   }, []);
 
   return (
-    <div className="p-6 container mx-auto">
-      <h2 className="text-2xl font-bold mb-6">Tech Services</h2>
-
-      {items.length === 0 && <p>No tech items available.</p>}
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {items.map((item) => (
-          <div key={item._id} className="border p-4 rounded shadow bg-white">
-            {/* IMAGE */}
-            <img
-              src={item.imageUrl}
-              alt={item.name}
-              className="w-full h-48 object-cover rounded mb-3"
-            />
-
-            {/* NAME */}
-            <h3 className="font-semibold text-lg">{item.name}</h3>
-
-            {/* DESCRIPTION */}
-            <p className="mt-2 text-gray-700">{item.description}</p>
-
-            {/* PHONE */}
-            <p className="mt-1">
-              📞{" "}
-              <a href={`tel:${item.phone}`} className="text-blue-600 underline">
-                {item.phone}
-              </a>
-            </p>
-
-            {/* LOCATION */}
-            <p className="mt-1">📍 {item.location}</p>
-
-            {/* RATING */}
-            <div className="mt-3 flex items-center gap-2">
-              <Stars value={Number(item.rating || 0)} />
-              <span className="text-sm text-gray-600">
-                ({item.rating ?? 0})
-              </span>
-            </div>
+    <div className="p-6 container mx-auto pt-20">
+          <h2 className="text-2xl font-bold mb-6 text-center">Tech Services</h2>
+    
+          {items.length === 0 && <p>No Tech Services available.</p>}
+    
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {items.map((item) => (
+              <div key={item._id} className="border p-4 rounded shadow bg-white">
+    
+                {/* IMAGE */}
+                <img
+                  src={item.imageUrl}
+                  alt={item.name}
+                  className="w-full h-48 object-cover rounded mb-3"
+                />
+    
+                {/* NAME */}
+                <h3 className="font-semibold text-lg mb-1">{item.name}</h3>
+    
+                {/* DESCRIPTION */}
+                {item.description && (
+                  <p className="text-sm text-gray-700 mb-1">
+                    {item.description}
+                  </p>
+                )}
+    
+                {/* LOCATION */}
+                {item.location && (
+                  <p className="text-sm text-gray-700 mb-1">
+                    📍 {item.location}
+                  </p>
+                )}
+    
+                {/* PHONE (clickable) */}
+                {item.phone && (
+                  <p className="text-sm text-blue-600 font-semibold mb-2">
+                    📞 <a href={`tel:${item.phone}`} className="underline">
+                      {item.phone}
+                    </a>
+                  </p>
+                )}
+    
+                {/* RATING */}
+                <div className="mt-2 flex items-center gap-2">
+                  <Stars value={Number(item.rating || 0)} />
+                  <span className="text-sm text-gray-600">
+                    ({item.rating ?? 0})
+                  </span>
+                </div>
+    
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <ChatWind />
-    </div>
+          <ChatWind />
+        </div>
   );
 }
