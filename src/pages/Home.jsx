@@ -87,59 +87,8 @@ export default function Home() {
         </div>
       </div>
 
-    <div className="flex flex-col justify-center items-center mx-2 com">
-      <h1 className="text-2xl font-bold mb-5">Connecting people with professionals can be a valuable service. Let's explore this idea further:
-         </h1>
-
-         <div className="mb-2">
-          <h1 className="mb-4">Key Features:</h1>
-         <p className="mb-4">1. Professional Directory: Create a comprehensive directory of professionals in various fields (e.g., real estate, engineering, logistics).
-       </p>
-         <p className="mb-4">2. Search and Filter: Allow users to search for professionals based on location, services, ratings, and other relevant criteria.
-        </p>
-         <p className="mb-4">3. Reviews and Ratings: Enable users to leave reviews and ratings for professionals they've worked with.
-         </p>
-         <p className="mb-4">4. Booking and Scheduling: Allow users to book appointments or schedule services directly through the platform.
-        </p>
-         <p className="mb-4">5. Payyment Processing: Integrate a secure payment system to facilitate transactions between users and professionals.
-      </p>
-         </div>
-
-         <div className="flex flex-col gap-2 mb-5">
-          <h1  className="">Benefits:
-           </h1>
-           <p>1. Convenience: Users can easily find and connect with professionals in various fields.
-           </p>
-           <p>2. Trust: Reviews and ratings help users make informed decisions about which professionals to work with.
-
-         </p>
-         <p>3. Increased Exposure: Professionals can showcase their services and reach a broader audience.
-
-        </p>
-         </div>
-
-         <div className="flex flex-col gap-2 mb-5">
-          <h1>Potential Revenue Streams:
-         </h1>
-         <p>1.⁠ ⁠Commission-based Booking Fees: Charge professionals a fee for each booking made through the platform.
-       </p>
-       <p>2.⁠ ⁠Subscription Model: Offer professionals a subscription-based model for premium services, such as increased visibility or priority listing.
-      </p>
-      <p>3.⁠ ⁠Advertising: Display targeted ads from relevant businesses or professionals.
-      </p>
-
-         </div>
-
-         <div  className="flex flex-col gap-2 mb-5">
-          <h1>Next Steps:
-         </h1>
-         <p>1.⁠ ⁠Identify Target Markets: Determine which industries or professions to focus on initially.
-         </p>
-         <p>2.⁠ ⁠Develop a User-Friendly Platform: Design a website or app that is easy to navigate and provides a seamless user experience.
-        </p>
-        <p>3.⁠ ⁠Recruit Professionals: Reach out to professionals in your target markets and invite them to join your platform.</p>
-         </div>
-    </div>
+   
+    
       <ChatWind />
     </div>
   );
