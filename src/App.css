@@ -60,6 +60,14 @@ body{
     background-position: 0% 50%;
   }
 }
+.com{
+  background-image: url(./assets/leposavas-logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+  
+  
+}
 
 
 

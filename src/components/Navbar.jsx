@@ -47,7 +47,7 @@ export default function Navbar() {
         {/* LOGO */}
         <div className="flex items-center gap-2 font-bold text-xl">
           <img src={LeposavasLogo} className="w-9 h-9 rounded-full" />
-          <h1>Leposavas</h1>
+          <h1>Leposavas ProfTech</h1>
         </div>
 
         {/* DESKTOP LINKS */}
