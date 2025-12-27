@@ -44,7 +44,7 @@ export default function Home() {
   <div className="mt-4 overflow-hidden">
     <h1 className="font-extrabold">Advert</h1>
 
-    <div className="text-lg font-semibold text-white bg-black md:w-[600px] w-full m-auto p-3 rounded transition-all duration-500 ease-in-out">
+    <div className="text-lg font-semibold text-white bg-black md:w-[300px] md:h-[350px] h-[300px] w-[250px] m-auto p-3 rounded transition-all duration-500 ease-in-out border border-red-500">
       <div
         key={adverts[currentIndex]._id}
         className="flex flex-col text-center animate-fadeAdvert items-center"
