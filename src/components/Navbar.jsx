@@ -9,6 +9,7 @@ export default function Navbar() {
   const [unreadCount, setUnreadCount] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [hideMobileNavbar, setHideMobileNavbar] = useState(false);
+   const [showRenters, setShowRenters] = useState(false);
 
   const isMobile = window.innerWidth < 768;
 
@@ -52,8 +53,37 @@ export default function Navbar() {
         {/* DESKTOP LINKS */}
         <div className="hidden md:flex items-center gap-6">
           <DelayedLink to="/">Home</DelayedLink>
-          <DelayedLink to="/chat">Chat</DelayedLink>
-          <DelayedLink to="/notifications">Notifications</DelayedLink>
+          {/* <DelayedLink to="/chat">Chat</DelayedLink> */}
+          <DelayedLink to="/ele">
+                    Engineering Services
+                  </DelayedLink>
+          
+                  <DelayedLink to="/tech">
+                    Tech Services
+                  </DelayedLink>
+          
+                  <DelayedLink to="/ser">
+                    Home Services
+                  </DelayedLink>
+
+                  <div>
+                            <button
+                              onClick={() => setShowRenters(!showRenters)}
+                              className="text-xl font-semibold hover:text-amber-400"
+                            >
+                              Renters Services ▼
+                            </button>
+                  
+                            {showRenters && (
+                              <div className="flex flex-col animate-fadeIn">
+                                <DelayedLink to="/car">Cars</DelayedLink>
+                                <DelayedLink to="/house">House/Hostels</DelayedLink>
+                                <DelayedLink to="/hostel">Hotel/Appartment</DelayedLink>
+                              </div>
+                            )}
+                          </div>
+
+                  <DelayedLink to="/notifications">Notifications</DelayedLink>
         </div>
 
         {/* MOBILE MENU ICON */}
@@ -72,11 +102,43 @@ export default function Navbar() {
             Home
           </DelayedLink>
 
-          <DelayedLink to="/chat" onClick={handleMobileLinkClick}>
+          {/* <DelayedLink to="/chat" onClick={handleMobileLinkClick}>
             Chat
-          </DelayedLink>
+          </DelayedLink> */}
 
-          <DelayedLink to="/notifications" onClick={handleMobileLinkClick}>
+          
+
+          <DelayedLink to="/ele">
+                    Engineering Services
+                  </DelayedLink>
+          
+                  <DelayedLink to="/tech">
+                    Tech Services
+                  </DelayedLink>
+          
+                  <DelayedLink to="/ser">
+                    Home Services
+                  </DelayedLink>
+
+                  <div>
+                            <button
+                              onClick={() => setShowRenters(!showRenters)}
+                              className="text-xl font-semibold hover:text-amber-400"
+                            >
+                              Renters Services ▼
+                            </button>
+                  
+                            {showRenters && (
+                              <div className="flex flex-col mt-3 animate-fadeIn">
+                                <DelayedLink to="/car">Cars</DelayedLink>
+                                <DelayedLink to="/house">House/Hostels</DelayedLink>
+                                <DelayedLink to="/hostel">Hotel/Appartment</DelayedLink>
+                              </div>
+                            )}
+                          </div>
+
+
+                  <DelayedLink to="/notifications" onClick={handleMobileLinkClick}>
             Notifications
             {unreadCount > 0 && (
               <span className="ml-2 text-xs bg-red-600 px-2 py-1 rounded-full">

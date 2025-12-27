@@ -44,7 +44,7 @@ export default function Home() {
   <div className="mt-4 overflow-hidden">
     <h1 className="font-extrabold">Advert</h1>
 
-    <div className="text-lg font-semibold text-white bg-black md:w-[300px] md:h-[350px] h-[300px] w-[250px] m-auto p-3 rounded transition-all duration-500 ease-in-out border border-red-500">
+    <div className="text-lg font-semibold text-white bg-black md:w-[300px] md:h-[350px] h-[300px] w-[250px] m-auto p-3 rounded transition-all duration-500 ease-in-out">
       <div
         key={adverts[currentIndex]._id}
         className="flex flex-col text-center animate-fadeAdvert items-center"
@@ -101,22 +101,7 @@ export default function Home() {
           Home Services
         </DelayedLink>
 
-        <div>
-          <button
-            onClick={() => setShowRenters(!showRenters)}
-            className="text-xl font-semibold hover:text-amber-400"
-          >
-            Renters Services ▼
-          </button>
-
-          {showRenters && (
-            <div className="flex flex-col mt-3 animate-fadeIn">
-              <DelayedLink to="/car" className="hover:text-red-500">Cars</DelayedLink>
-              <DelayedLink to="/house" className="hover:text-red-500">House/Hostels</DelayedLink>
-              <DelayedLink to="/hostel" className="hover:text-red-500">Hotel/Appartment</DelayedLink>
-            </div>
-          )}
-        </div>
+        
       </div>
 
       <ChatWind />
