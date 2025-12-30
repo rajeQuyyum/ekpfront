@@ -122,15 +122,15 @@ export default function AdminTech() {
 
   return (
     <div className="p-6 bg-white rounded shadow w-full">
-      <h2 className="font-bold text-xl mb-4">Tech Management</h2>
+      <h2 className="font-bold text-xl mb-4">Store Management</h2>
 
       {/* CREATE */}
       <div className="border p-4 rounded mb-6">
-        <h3 className="font-semibold mb-3">Create New Tech</h3>
+        <h3 className="font-semibold mb-3">Create New Storeh</h3>
 
         <input
           className="border p-2 w-full mb-2 rounded"
-          placeholder="Tech Name (max 30 character)"
+          placeholder=" Name"
           maxLength={30}
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -154,7 +154,7 @@ export default function AdminTech() {
 
         <input
           className="border p-2 w-full mb-2 rounded"
-          placeholder="Phone Number (max 28 character)"
+          placeholder="Price"
           maxLength={28}
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
@@ -165,7 +165,7 @@ export default function AdminTech() {
 
         <input
           className="border p-2 w-full mb-2 rounded"
-          placeholder="Location (max 25 character)"
+          placeholder="Available)"
           maxLength={25}
           value={location}
           onChange={(e) => setLocation(e.target.value)}
@@ -215,7 +215,7 @@ export default function AdminTech() {
               {/* EDIT MODE */}
               <input
                 className="border p-2 w-full mb-2 rounded"
-                 placeholder="Tech Name (max 30 character)"
+                 placeholder=" Name"
                  maxLength={30}
                 value={editName}
                 onChange={(e) => setEditName(e.target.value)}
@@ -239,7 +239,7 @@ export default function AdminTech() {
 
               <input
                 className="border p-2 w-full mb-2 rounded"
-                placeholder="Phone Number (max 28 character)"
+                placeholder="Price"
                 maxLength={28}
                 value={editPhone}
                 onChange={(e) => setEditPhone(e.target.value)}
@@ -251,7 +251,7 @@ export default function AdminTech() {
 
               <input
                 className="border p-2 w-full mb-2 rounded"
-                 placeholder="Location (max 25 character)"
+                 placeholder="Available"
                 maxLength={25}
                 value={editLocation}
                 onChange={(e) => setEditLocation(e.target.value)}
@@ -317,8 +317,8 @@ export default function AdminTech() {
               />
 
               <p className="mt-2">{item.description}</p>
-              <p>📞 {item.phone}</p>
-              <p>📍 {item.location}</p>
+              <p>Price: {item.phone}</p>
+              <p>Available: {item.location}</p>
 
               <div className="mt-2">
                 <strong>Rating:</strong> {item.rating} ⭐

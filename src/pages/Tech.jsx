@@ -49,7 +49,7 @@ export default function Tech() {
 
   return (
     <div className="p-6 container mx-auto pt-20">
-          <h2 className="text-2xl font-bold mb-6 text-center">Tech Services</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center">Store</h2>
     
           {items.length === 0 && <p>No Tech Services available.</p>}
     
@@ -76,15 +76,15 @@ export default function Tech() {
     
                 {/* LOCATION */}
                 {item.location && (
-                  <p className="text-sm text-gray-700 mb-1">
-                    📍 {item.location}
+                  <p className="text-sm text-green-500 mb-1">
+                    Available:{item.location}
                   </p>
                 )}
     
                 {/* PHONE (clickable) */}
                 {item.phone && (
-                  <p className="text-sm text-blue-600 font-semibold mb-2">
-                    📞 <a href={`tel:${item.phone}`} className="underline">
+                  <p className="text-sm  font-extrabold mb-2">
+                    Price:₦<a href={`tel:${item.phone}`} className="">
                       {item.phone}
                     </a>
                   </p>

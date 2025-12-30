@@ -60,7 +60,7 @@ export default function Navbar() {
                   </DelayedLink>
           
                   <DelayedLink to="/tech">
-                    Tech Services
+                    Store
                   </DelayedLink>
           
                   <DelayedLink to="/ser">
@@ -131,7 +131,7 @@ export default function Navbar() {
                   </DelayedLink>
           
                   <DelayedLink to="/tech">
-                    Tech Services
+                     Store
                   </DelayedLink>
           
                   <DelayedLink to="/ser">
