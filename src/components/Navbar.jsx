@@ -4,6 +4,7 @@ import { socket } from "../socket";
 import DelayedLink from "./DelayedLink";
 import LeposavasLogo from "../assets/leposavas-logo.png";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 export default function Navbar() {
   const [unreadCount, setUnreadCount] = useState(0);
@@ -53,7 +54,7 @@ export default function Navbar() {
         {/* DESKTOP LINKS */}
         <div className="hidden md:flex items-center gap-6">
           <DelayedLink to="/">Home</DelayedLink>
-          {/* <DelayedLink to="/chat">Chat</DelayedLink> */}
+          <DelayedLink to="/abt">About</DelayedLink>
           <DelayedLink to="/ele">
                     Engineering Services
                   </DelayedLink>
@@ -65,6 +66,8 @@ export default function Navbar() {
                   <DelayedLink to="/ser">
                     Home Services
                   </DelayedLink>
+
+
 
                   <div>
                             <button
@@ -83,7 +86,22 @@ export default function Navbar() {
                             )}
                           </div>
 
-                  <DelayedLink to="/notifications">Notifications</DelayedLink>
+               <DelayedLink
+  to="/notifications"
+  onClick={handleMobileLinkClick}
+  className="relative"
+>
+  <IoIosNotificationsOutline
+    className={`text-2xl ${
+      unreadCount > 0 ? "text-red-600" : "text-white"
+    }`}
+  />
+
+  {unreadCount > 0 && (
+    <span className="absolute top-0 right-0 w-2 h-2 bg-red-600 rounded-full" />
+  )}
+</DelayedLink>
+
         </div>
 
         {/* MOBILE MENU ICON */}
@@ -102,9 +120,9 @@ export default function Navbar() {
             Home
           </DelayedLink>
 
-          {/* <DelayedLink to="/chat" onClick={handleMobileLinkClick}>
-            Chat
-          </DelayedLink> */}
+          <DelayedLink to="/abt" onClick={handleMobileLinkClick}>
+            About
+          </DelayedLink>
 
           
 

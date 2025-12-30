@@ -14,6 +14,7 @@ import HomeServices from "./pages/HomeServices.jsx";
 import Cars from "./pages/Cars.jsx";
 import Houses from "./pages/Houses.jsx";
 import Hotels from "./pages/Hotels.jsx";
+import About from "./pages/About.jsx";
 
 export default function App() {
   // Global loading screen state
@@ -62,6 +63,7 @@ export default function App() {
             <Route path="car" element={<Cars />} />
             <Route path="house" element={<Houses />} />
             <Route path="hostel" element={<Hotels />} />
+            <Route path="abt" element={<About />} />
           </Routes>
         </main>
 

@@ -87,7 +87,23 @@ export default function Home() {
         </div>
       </div>
 
-   
+   <div className="flex flex-col justify-center md:ml-40 gap-3 ml-0 px-2 md:px-0">
+    <h1>What We Do
+      </h1>
+      <p>At Leposavas Proftech, we connect professionals with clients within their location, facilitating collaborations and opportunities that drive business growth and innovation in the following industries:</p>
+      <p>•⁠  ⁠Real Estate: We link professionals such as property managers, real estate agents, and contractors with clients seeking expertise in property development, management, and transactions.</p>
+      <p>⁠E-commerce: Our network enables ecommerce businesses to find professionals with expertise in digital marketing, logistics, and technology, helping them scale and succeed</p>
+      <p>•⁠  ⁠Engineering: We connect engineering professionals with clients seeking expertise in fields such as electrical engineering, mechanical engineering, and project management.</p>
+      
+     
+      <h1>Our Mission:</h1>
+      <p>Our mission is to empower professionals and organizations in these industries by facilitating meaningful connections that lead to successful collaborations and business growth.</p>
+      <p>How We Help</p>
+      <p>•⁠  ⁠Professional Networking: We provide a platform for professionals to showcase their skills and connect with potential clients.</p>
+      <p>•⁠  ⁠Client Matching: Our network enables clients to find and engage with professionals who meet their specific needs.</p>
+      <p>•⁠  ⁠Local Innovation: By fostering connections between professionals and clients, we contribute to the growth of local economies and innovation ecosystems.</p>
+
+   </div>
     
       <ChatWind />
     </div>
