@@ -51,7 +51,7 @@ export default function Tech() {
     <div className="p-6 container mx-auto pt-20">
           <h2 className="text-2xl font-bold mb-6 text-center">Store</h2>
     
-          {items.length === 0 && <p>No Tech Services available.</p>}
+          {items.length === 0 && <p>No available.</p>}
     
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {items.map((item) => (
